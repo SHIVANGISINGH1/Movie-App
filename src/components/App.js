@@ -8,7 +8,7 @@ import data from '../data'
 
 function App() {
   return (
-    <div className="App">
+      <div className="App">
       <Navbar_Component />
       <div className="main">
         <div className="tabs">
@@ -17,14 +17,16 @@ function App() {
         </div>
 
         <div className="list">
-          {data.map((movie) => (
-            <Card_Component movie={movie}/>
+          {data.map((movie,index) => (
+            <Card_Component movie={movie} key={index}/>
           ))}
             
         </div>
       </div>
     </div>
+
+    
   );
 }
-
 export default App;
+
