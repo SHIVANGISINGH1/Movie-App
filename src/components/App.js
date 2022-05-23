@@ -6,27 +6,52 @@ import Card_Component from './Card_Component'
 import data from '../data'
 
 
-function App() {
-  return (
-      <div className="App">
-      <Navbar_Component />
-      <div className="main">
-        <div className="tabs">
-          <Button variant="warning">Movies</Button>
-          <Button variant="info">Favourites</Button>
-        </div>
+class App extends React.Component {
 
-        <div className="list">
-          {data.map((movie,index) => (
-            <Card_Component movie={movie} key={index}/>
-          ))}
-            
-        </div>
-      </div>
-    </div>
+	componentDidMount() {
 
-    
-  );
+		const {store} = this.props;
+
+		store.subscribe(() => {
+			console.log("subscibe")
+			this.forceUpdate();
+		})
+		const add_movies = () => {
+			return {
+				type: 'Add/Movies',
+				movies: data
+			}
+		}
+
+		store.dispatch(add_movies());
+		console.log("store = ",this.props.store);
+	}
+
+
+	render() {
+		console.log("render")
+		const movies = this.props.store.getState().addMovie;
+		console.log("olaoal", movies)
+		return (
+			<div className="App">
+				<Navbar_Component />
+				<div className="main">
+				<div className="tabs">
+					<Button variant="warning">Movies</Button>
+					<Button variant="info">Favourites</Button>
+				</div>
+
+				<div className="list">
+					{movies.map((movie,index) => (
+					<Card_Component movie={movie} key={index}/>
+				))}
+				
+				</div>
+			</div>
+		</div>
+		);
+  }
+  
 }
 export default App;
 
