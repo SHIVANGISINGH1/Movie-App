@@ -25,7 +25,7 @@ class App extends React.Component {
 
 	render() {
 		console.log("render")
-		const movies = this.props.store.getState().addMovie;
+		const movies = this.props.store.getState().addMovie.listMovies;
 		console.log("olaoal", movies)
 		return (
 			<div className="App">
