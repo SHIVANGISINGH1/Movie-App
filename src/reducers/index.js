@@ -1,4 +1,5 @@
-import {addMovies} from '../actions/index';
+import {addMovies, removeFavourite} from '../actions/index';
+import { addFavourite } from '../actions/index';
 
 const initialState = {
     listMovies: [],
@@ -8,10 +9,31 @@ const initialState = {
 function addMovie(state = initialState, action) {
     if (action.type === addMovies) {
         return {
-            ...initialState,
+            ...state,
             listMovies : action.movies
         }
     }
+
+    else if (action.type === addFavourite) {
+        console.log("initial state" , state)
+        return {
+            ...state,
+            listFavourites: [action.movie, ...state.listFavourites]
+        }
+    }
+
+    else if (action.type === removeFavourite) {
+
+        const filteredMovies = state.listFavourites.filter((ele) => {
+            return ele !== action.movie; 
+        })
+
+        return {
+            ...state,
+            listFavourites : filteredMovies
+        }
+    }
+    else 
     return state;
 }
 

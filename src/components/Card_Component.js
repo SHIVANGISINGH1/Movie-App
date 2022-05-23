@@ -1,10 +1,24 @@
 import { Card, Button } from "react-bootstrap";
+import { add_favourite, remove_favourite } from "../actions";
 import React from "react";
 
 class Card_Component extends React.Component {
 
-    render() {
+   
+
+    handleFavouriteClick = () => {
         const {movie} = this.props;
+        this.props.dispatch(add_favourite(movie))
+    }
+
+    handleUnFavouriteClick = () => {
+        const {movie} = this.props;
+        this.props.dispatch(remove_favourite(movie))
+    }
+
+    render() {
+        
+        const {movie, isFav} = this.props;
         return (
             <div className="card-compo">
                 <div className="img">
@@ -16,7 +30,14 @@ class Card_Component extends React.Component {
                     <Card.Text>
                     {movie.description}
                     </Card.Text>
-                    <Button variant="danger">Favoutite</Button>
+
+                    {
+                        isFav 
+                        ? <Button variant="info" onClick= {this.handleUnFavouriteClick}>Unfavoutite</Button>
+                        : <Button variant="danger" onClick= {this.handleFavouriteClick}>Favoutite</Button>
+                    }
+                    
+                    
                 </Card.Body>
                 <Card.Footer>
                         Rating: {movie.users_rating}
