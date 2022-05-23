@@ -18,15 +18,5 @@ root.render(
 	</React.StrictMode>
 );
 
-// const addmovie = () => {
-//   return {
-//    type: 'Add/movies',
-//    movies: [{title: 'Catty'}]
-//   }
-// }
-
-// console.log(store.getState())
-// store.dispatch(addmovie());
-// console.log(store.getState())
 
 

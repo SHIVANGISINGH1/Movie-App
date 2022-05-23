@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import Navbar_Component from './Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card_Component from './Card_Component'
+import { add_movies } from '../actions';
 import data from '../data'
 
 
@@ -16,15 +17,9 @@ class App extends React.Component {
 			console.log("subscibe")
 			this.forceUpdate();
 		})
-		const add_movies = () => {
-			return {
-				type: 'Add/Movies',
-				movies: data
-			}
-		}
-
-		store.dispatch(add_movies());
-		console.log("store = ",this.props.store);
+		
+		store.dispatch(add_movies(data));
+		console.log("store = ",this.props.store.getState());
 	}
 
 
