@@ -1,4 +1,4 @@
-import {addMovies, removeFavourite, showFavourites, showAll} from '../actions/index';
+import {addMovies, removeFavourite, showTab} from '../actions/index';
 import { addFavourite } from '../actions/index';
 
 const initialState = {
@@ -35,23 +35,13 @@ function addMovie(state = initialState, action) {
         }
     }
 
-    else if (action.type === showFavourites) {
-     
-
+    else if (action.type === showTab) {
         return {
             ...state,
-            listFavourites : action.movies,
             showFavouritesTab : action.showFavourites
         }
     }
 
-    else if (action.type === showAll) {
-        return {
-            ...state,
-            listMovies: action.movies,
-            showFavouritesTab: action.showFavourites
-        }
-    }
     else 
     return state;
 }

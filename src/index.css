@@ -8,7 +8,6 @@ body {
 
 }
 
-
 .main {
 	display: flex;
 	flex-direction: column;
@@ -41,4 +40,12 @@ body {
 	justify-content: center;
 	margin: 1.5rem;
 	border-radius: 1.2rem;
+}
+
+.btn.btn-warning.chng {
+	opacity: 0.7;
+}
+
+.btn.btn-info.chng {
+	opacity: 0.7;
 }
