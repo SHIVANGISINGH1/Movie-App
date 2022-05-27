@@ -49,3 +49,8 @@ body {
 .btn.btn-info.chng {
 	opacity: 0.7;
 }
+
+
+.navbar-expand-lg .navbar-collapse  {
+	justify-content: center;
+}
