@@ -4,21 +4,22 @@ import React from "react";
 
 class Card_Component extends React.Component {
 
-   
-
     handleFavouriteClick = () => {
         const {movie} = this.props;
-        this.props.dispatch(add_favourite(movie))
+        const {dispatch} = this.props;
+        console.log(dispatch(add_favourite(movie)))
     }
 
     handleUnFavouriteClick = () => {
         const {movie} = this.props;
-        this.props.dispatch(remove_favourite(movie))
+        const {dispatch} = this.props;
+        dispatch(remove_favourite(movie))
     }
 
     render() {
         
-        const {movie, isFav} = this.props;
+        const {movie, isFav, dispatch} = this.props;
+   
         return (
             <div className="card-compo">
                 <div className="img">

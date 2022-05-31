@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/App';
-import { configureStore } from '@reduxjs/toolkit'
-import addMovie from './reducers/index'
+import { configureStore, combineReducers} from '@reduxjs/toolkit'
+
+
 import './index.css';
+import reducer from './reducers/index';
 
 const store =  configureStore({
-  reducer: {
-    	addMovie
-  },
+	reducer
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

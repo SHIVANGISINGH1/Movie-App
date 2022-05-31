@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import {rootReducer} from '../reducers/index';
 import Navbar_Component from './Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card_Component from './Card_Component'
@@ -24,7 +25,7 @@ class App extends React.Component {
 
 	isMovieFavourite = (movie) => {
 
-		const moviesList = this.props.store.getState().addMovie.listFavourites;
+		const moviesList = this.props.store.getState().movies.listFavourites;
 		//console.log("ml", moviesList)
 
 		const index = moviesList.indexOf(movie);
@@ -44,12 +45,16 @@ class App extends React.Component {
 	
 
 	render() {
-		let movies = [];
+		
 		const {store} = this.props;
-		const val = store.getState().addMovie.showFavouritesTab;
+		console.log("store", store.getState());
+		const {movies} = store.getState();
+		console.log("moviesRed", movies)
+		const {listMovies, listFavourites, showFavouritesTab} = movies;
+		const val = showFavouritesTab;
 
-		movies = val ? this.props.store.getState().addMovie.listFavourites : 
-		this.props.store.getState().addMovie.listMovies;
+		const moviesAll = val ? listFavourites : listMovies;
+		console.log("movies",moviesAll)
 		
 		return (
 			<div className="App">
@@ -70,14 +75,14 @@ class App extends React.Component {
 				
 				
 				<div className="list">
-					{movies.map((movie,index) => (
+					{moviesAll.map((movie,index) => (
 					<Card_Component 
 						movie={movie} 
 						key={index} 
-						dispatch={this.props.store.dispatch}
+						dispatch= {store.dispatch}
 						isFav = {this.isMovieFavourite(movie)}/>
 				))}
-				{movies.length === 0 ? <div>No favourites found</div>: null}
+				{moviesAll.length === 0 ? <div>No favourites found</div>: null}
 				</div>
 			</div>
 		</div>

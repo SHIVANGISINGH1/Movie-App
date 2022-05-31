@@ -1,7 +1,4 @@
-{
-//    type: 'Add_Movie'
-//    movies: [m1,m2]
-}
+
 
 // action types
 export const addMovies = 'Add/Movies';
@@ -13,7 +10,7 @@ export const showTab = 'Show/Tab';
 export const add_movies = (movies) => {
     return {
         type: addMovies,
-        movies: movies
+        movies
     }
 }
 
