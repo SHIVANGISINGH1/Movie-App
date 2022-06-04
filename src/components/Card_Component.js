@@ -19,17 +19,18 @@ class Card_Component extends React.Component {
     render() {
         
         const {movie, isFav, dispatch} = this.props;
-   
+        console.log(movie.title)
         return (
+           
             <div className="card-compo">
                 <div className="img">
-                    <img src={movie.img_url}></img>
+                    <img src={movie.img_url === undefined ? movie.Poster : movie.img_url}></img>
                 </div>
                 <Card style={{ width: '30rem' }} bg='dark' text='white'>
                     <Card.Body>
-                    <Card.Title>{movie.title}</Card.Title>
+                    <Card.Title>{movie.title === undefined ? movie.Title : movie.title}</Card.Title>
                     <Card.Text>
-                    {movie.description}
+                    {movie.description === undefined ? movie.Plot: movie.description}
                     </Card.Text>
 
                     {
@@ -41,7 +42,7 @@ class Card_Component extends React.Component {
                     
                 </Card.Body>
                 <Card.Footer>
-                        Rating: {movie.users_rating}
+                        Rating: {movie.users_rating === undefined ? movie.Ratings[0].Value : movie.users_rating}
                 </Card.Footer>
                 </Card>
             </div>

@@ -8,20 +8,32 @@ import './index.css';
 import reducer from './reducers/index';
 
 
-const logger = function({dispatch, getState}) {
-	return function(next) {
-		return function(action) {
-			console.log("Action type", action.type);
-			next(action);
-		}
-	}
+// const logger = function({dispatch, getState}) {
+// 	return function(next) {
+// 		return function(action) {
+// 			console.log("Action type", action.type);
+// 			next(action);
+// 		}
+// 	}
+// }
+
+const logger = ({dispatch, getState}) => (next) => (action) => {
+	console.log("Action type", action.type);
+	next(action);
+	
 }
 
-
+const thunk = ({dispatch, getState}) => (next) => (action) => {
+	if (typeof(action) === 'function') {
+		action(dispatch);
+		return;
+	}
+	next(action);
+}
 
 const store =  configureStore({
 	reducer: reducer,
-	middleware: [logger]
+	middleware: [logger, thunk]
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

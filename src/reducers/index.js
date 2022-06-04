@@ -1,4 +1,4 @@
-import {addMovies, removeFavourite, showTab} from '../actions/index';
+import {addMovies, removeFavourite, showTab, addSearchMovie, addMovieToList} from '../actions/index';
 import { addFavourite } from '../actions/index';
 import {combineReducers} from '@reduxjs/toolkit'
 const initialState = {
@@ -9,8 +9,9 @@ const initialState = {
 
 
 const intitalSearchState = {
-    result: {}
-}
+    result: {},
+    showSearch: false
+};
 
 export function movies(state = initialState, action) {
     console.log("initial state" , state)
@@ -42,6 +43,14 @@ export function movies(state = initialState, action) {
         }
     }
 
+    else if (action.type === addMovieToList) {
+        return {
+            ...state,
+            listMovies: [action.movie, ...state.listMovies]
+        }
+    }
+    
+
     else if (action.type === showTab) {
         return {
             ...state,
@@ -55,6 +64,20 @@ export function movies(state = initialState, action) {
 
 
 export function search(state = intitalSearchState, action) {
+
+    if (action.type === addSearchMovie) {
+        return {
+            result: action.movie,
+            showSearch: true
+        }
+    }
+
+    else if (action.type === addMovieToList) {
+        return {
+            ...state,
+            showSearch: false
+        }
+    }
     return state;
 }
 

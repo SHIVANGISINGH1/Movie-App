@@ -49,6 +49,7 @@ class App extends React.Component {
 		const {store} = this.props;
 		console.log("store", store.getState());
 		const {movies} = store.getState();
+		const {search} = store.getState();
 		console.log("moviesRed", movies)
 		const {listMovies, listFavourites, showFavouritesTab} = movies;
 		const val = showFavouritesTab;
@@ -58,7 +59,7 @@ class App extends React.Component {
 		
 		return (
 			<div className="App">
-				<Navbar_Component />
+				<Navbar_Component search={search} dispatch={store.dispatch} />
 				<div className="main">
 				<div className="tabs">
 					<Button variant="warning" className={val ? 'btn btn-warning chng': ''} onClick={
