@@ -13,20 +13,19 @@ class App extends React.Component {
 	componentDidMount() {
 
 		const {store} = this.props;
-
+		// subscribe is called everytime a action is dispatched 
 		store.subscribe(() => {
 			console.log("subscibe")
 			this.forceUpdate();
 		})
 		
+		// dispatching means sending your action to the reducer
 		store.dispatch(add_movies(data));
-		console.log("store = ",this.props.store.getState());
 	}
 
 	isMovieFavourite = (movie) => {
 
 		const moviesList = this.props.store.getState().movies.listFavourites;
-		//console.log("ml", moviesList)
 
 		const index = moviesList.indexOf(movie);
 		if (index === -1) {
@@ -47,15 +46,13 @@ class App extends React.Component {
 	render() {
 		
 		const {store} = this.props;
-		console.log("store", store.getState());
 		const {movies} = store.getState();
 		const {search} = store.getState();
-		console.log("moviesRed", movies)
 		const {listMovies, listFavourites, showFavouritesTab} = movies;
 		const val = showFavouritesTab;
 
 		const moviesAll = val ? listFavourites : listMovies;
-		console.log("movies",moviesAll)
+	
 		
 		return (
 			<div className="App">

@@ -4,10 +4,7 @@ import { Navbar, Form, Button, Container, FormControl, Card } from "react-bootst
 
 class Navbar_Component extends React.Component {
 
-    constructor(props) {
-        super(props);
-        
-    }
+   
 
     handleSearch = () => {
         const {searchText} = this.state;
