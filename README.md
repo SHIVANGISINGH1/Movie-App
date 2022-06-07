@@ -1,8 +1,5 @@
-## Hello Folks, I am making React App using Redux, its still a work in progress
+### `npm start`
 
-To see the app please follow the following instructions:
-
-    1. Fork this repository.
-    2. 
-
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
