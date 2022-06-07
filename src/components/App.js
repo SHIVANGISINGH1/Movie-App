@@ -1,14 +1,15 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import {rootReducer} from '../reducers/index';
-import Navbar_Component from './Navbar';
+import NavbarComponent from './Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Card_Component from './Card_Component'
+import Card_Component from './Card_Component';
+import { StoreContext } from '..';
 import { add_movies, show_tabs } from '../actions';
-import data from '../data'
+import data from '../data';
 
 
-class App extends React.Component {
+ class App extends React.Component {
 
 	componentDidMount() {
 
@@ -52,11 +53,9 @@ class App extends React.Component {
 		const val = showFavouritesTab;
 
 		const moviesAll = val ? listFavourites : listMovies;
-	
-		
 		return (
 			<div className="App">
-				<Navbar_Component search={search} dispatch={store.dispatch} />
+				<NavbarComponent search={search}/>
 				<div className="main">
 				<div className="tabs">
 					<Button variant="warning" className={val ? 'btn btn-warning chng': ''} onClick={
@@ -88,5 +87,18 @@ class App extends React.Component {
   }
   
 }
-export default App;
+
+class AppWrapper extends React.Component {
+	render() {
+		return (
+				<StoreContext.Consumer>
+					{(store) => (
+						<App store={store}/>
+					)}	
+				</StoreContext.Consumer>
+			)
+	}
+}
+
+export default AppWrapper;
 

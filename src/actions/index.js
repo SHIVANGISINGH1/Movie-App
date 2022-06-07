@@ -64,8 +64,5 @@ export const handleSearchMovie = (movie) => {
             console.log("movie is", movie)
             dispatch(add_Searched_movie(movie))
         })
-    
-        // call dispatch to add this movie to store
-      
     }
 }

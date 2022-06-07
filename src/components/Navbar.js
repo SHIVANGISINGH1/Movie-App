@@ -1,11 +1,17 @@
 import React from 'react';
 import {handleSearchMovie, add_movie_to_list} from '../actions'
 import { Navbar, Form, Button, Container, FormControl, Card } from "react-bootstrap";
+import { StoreContext } from '..';
 
-class Navbar_Component extends React.Component {
+class NavbarComponent extends React.Component {
 
-   
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchText: ''
+        }
+    }
+    
     handleSearch = () => {
         const {searchText} = this.state;
         this.props.dispatch(handleSearchMovie(searchText))
@@ -65,10 +71,22 @@ class Navbar_Component extends React.Component {
                 </Card> 
                 </div> }
             </div>
-            
-           
         )
     }
 }
 
-export default Navbar_Component;
+
+
+class NavbarWrapper extends React.Component {
+    render() {
+        return (
+            <StoreContext.Consumer>
+                {(store) => (
+                    <NavbarComponent dispatch={store.dispatch} search ={this.props.search}></NavbarComponent>
+                )}
+            </StoreContext.Consumer>
+        )
+    }
+}
+
+export default NavbarWrapper;
