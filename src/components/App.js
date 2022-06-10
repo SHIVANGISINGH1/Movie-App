@@ -1,10 +1,8 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import {rootReducer} from '../reducers/index';
 import NavbarComponent from './Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card_Component from './Card_Component';
-import { StoreContext } from '..';
 import { add_movies, show_tabs } from '../actions';
 import data from '../data';
 import { connect } from '..';
@@ -46,7 +44,7 @@ import { connect } from '..';
 		const moviesAll = val ? listFavourites : listMovies;
 		return (
 			<div className="App">
-				<NavbarComponent search={search}/>
+				<NavbarComponent/>
 				<div className="main">
 				<div className="tabs">
 					<Button variant="warning" className={val ? 'btn btn-warning chng': ''} onClick={

@@ -1,7 +1,7 @@
 import React from 'react';
 import {handleSearchMovie, add_movie_to_list} from '../actions'
 import { Navbar, Form, Button, Container, FormControl, Card } from "react-bootstrap";
-import { StoreContext } from '..';
+import { connect } from '..';
 
 class NavbarComponent extends React.Component {
 
@@ -76,17 +76,11 @@ class NavbarComponent extends React.Component {
 }
 
 
-
-class NavbarWrapper extends React.Component {
-    render() {
-        return (
-            <StoreContext.Consumer>
-                {(store) => (
-                    <NavbarComponent dispatch={store.dispatch} search ={this.props.search}></NavbarComponent>
-                )}
-            </StoreContext.Consumer>
-        )
+function callback(state) {
+    return {
+        search: state.search  
     }
 }
 
-export default NavbarWrapper;
+const connectedNavbarComponent = connect(callback)(NavbarComponent);
+export default connectedNavbarComponent;
