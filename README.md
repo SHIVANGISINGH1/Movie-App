@@ -1,4 +1,11 @@
-### `npm start`
+## To install the app in your sysytem
+
+1. Fork the repository. 
+2. Run the following commands
+
+        npm i
+        npm start
+
 
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
