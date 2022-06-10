@@ -7,26 +7,19 @@ import Card_Component from './Card_Component';
 import { StoreContext } from '..';
 import { add_movies, show_tabs } from '../actions';
 import data from '../data';
-
+import { connect } from '..';
 
  class App extends React.Component {
 
 	componentDidMount() {
-
-		const {store} = this.props;
-		// subscribe is called everytime a action is dispatched 
-		store.subscribe(() => {
-			console.log("subscibe")
-			this.forceUpdate();
-		})
-		
+		const {dispatch} = this.props;
 		// dispatching means sending your action to the reducer
-		store.dispatch(add_movies(data));
+		dispatch(add_movies(data));
 	}
 
 	isMovieFavourite = (movie) => {
 
-		const moviesList = this.props.store.getState().movies.listFavourites;
+		const moviesList = this.props.movies.listFavourites;
 
 		const index = moviesList.indexOf(movie);
 		if (index === -1) {
@@ -38,17 +31,15 @@ import data from '../data';
 	}
 
 	showTab = (value) => {
-		const {store} = this.props;
-		store.dispatch(show_tabs(value));
+		const {dispatch} = this.props;
+		dispatch(show_tabs(value));
 	}
 
 	
 
 	render() {
 		
-		const {store} = this.props;
-		const {movies} = store.getState();
-		const {search} = store.getState();
+		const {movies, search, dispatch} = this.props;
 		const {listMovies, listFavourites, showFavouritesTab} = movies;
 		const val = showFavouritesTab;
 
@@ -76,7 +67,7 @@ import data from '../data';
 					<Card_Component 
 						movie={movie} 
 						key={index} 
-						dispatch= {store.dispatch}
+						dispatch= {dispatch}
 						isFav = {this.isMovieFavourite(movie)}/>
 				))}
 				{moviesAll.length === 0 ? <div>No favourites found</div>: null}
@@ -88,17 +79,14 @@ import data from '../data';
   
 }
 
-class AppWrapper extends React.Component {
-	render() {
-		return (
-				<StoreContext.Consumer>
-					{(store) => (
-						<App store={store}/>
-					)}	
-				</StoreContext.Consumer>
-			)
+
+
+function callback(state) {
+	return {
+		movies: state.movies,
+		search: state.search
 	}
 }
+const connectedAppComponent = connect(callback)(App);
 
-export default AppWrapper;
-
+export default connectedAppComponent;
