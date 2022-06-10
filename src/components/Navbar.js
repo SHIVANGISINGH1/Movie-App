@@ -1,7 +1,7 @@
 import React from 'react';
 import {handleSearchMovie, add_movie_to_list} from '../actions'
 import { Navbar, Form, Button, Container, FormControl, Card } from "react-bootstrap";
-import { connect } from '..';
+import {connect} from 'react-redux';
 
 class NavbarComponent extends React.Component {
 

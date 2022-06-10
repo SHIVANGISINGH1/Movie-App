@@ -130,3 +130,9 @@ The `Context` object have two main features
 
  To avoid this we can wrap this in another component and pass store as props to it.
  [code](src%5Ccomponents%5CApp.js)
+
+### 9. Using [connect()](https://react-redux.js.org/api/connect), writing our own connect function 
+
+Earlier we have used the concept of context, but it is very tediuos to write it everytime in all the components. 
+So we can use a redux connect() function through which we can connect our store to the components. 
+I have implemented the connect() without using the library connect function which does the same work.

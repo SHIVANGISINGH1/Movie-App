@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Card_Component from './Card_Component';
 import { add_movies, show_tabs } from '../actions';
 import data from '../data';
-import { connect } from '..';
+import {connect} from 'react-redux';
 
  class App extends React.Component {
 
