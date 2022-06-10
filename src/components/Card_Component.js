@@ -26,10 +26,10 @@ class Card_Component extends React.Component {
                 <div className="img">
                     <img src={movie.img_url === undefined ? movie.Poster : movie.img_url}></img>
                 </div>
-                <Card style={{ width: '30rem' }} bg='dark' text='white'>
-                    <Card.Body>
+                <Card style={{ width: '20rem' }} bg='dark' text='white'>
+                    <Card.Body >
                     <Card.Title>{movie.title === undefined ? movie.Title : movie.title}</Card.Title>
-                    <Card.Text>
+                    <Card.Text style={{fontSize: '0.889rem'}}>
                     {movie.description === undefined ? movie.Plot: movie.description}
                     </Card.Text>
 
