@@ -54,7 +54,6 @@ export const add_movie_to_list = (movie) => {
 export const handleSearchMovie = (movie) => {
     return function(dispatch) {
         console.log(dispatch)
-        console.log("movies")
 
         const url = `https://www.omdbapi.com/?i=tt3896198&apikey=30ca8786&t=${movie}`;
     
