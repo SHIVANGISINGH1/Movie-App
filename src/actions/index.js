@@ -56,7 +56,7 @@ export const handleSearchMovie = (movie) => {
         console.log(dispatch)
         console.log("movies")
 
-        const url = `http://www.omdbapi.com/?i=tt3896198&apikey=30ca8786&t=${movie}`;
+        const url = `https://www.omdbapi.com/?i=tt3896198&apikey=30ca8786&t=${movie}`;
     
         fetch(url)
         .then(response => response.json())
