@@ -1,5 +1,3 @@
-
-
 // action types
 export const addMovies = 'Add/Movies';
 export const addFavourite = 'Add/Favourite';
@@ -53,14 +51,12 @@ export const add_movie_to_list = (movie) => {
 
 export const handleSearchMovie = (movie) => {
     return function(dispatch) {
-        console.log(dispatch)
 
         const url = `https://www.omdbapi.com/?i=tt3896198&apikey=30ca8786&t=${movie}`;
     
         fetch(url)
         .then(response => response.json())
         .then(movie => {
-            console.log("movie is", movie)
             dispatch(add_Searched_movie(movie))
         })
     }
